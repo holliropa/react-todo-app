@@ -1,0 +1,60 @@
+﻿import styles from "./task-item.module.css";
+import { TbCheck, TbPencil, TbTrash } from "react-icons/tb";
+import type { Task } from "@/types.ts";
+import { BsFillCheckCircleFill } from "react-icons/bs";
+import { useTasks } from "@/contexts/TasksContext.tsx";
+import { useRef, useState } from "react";
+
+interface Props {
+  task: Task;
+  onCompleted: () => void;
+  onDelete: () => void;
+}
+
+export function TaskItem({ task, onCompleted, onDelete }: Props) {
+  const { editTask } = useTasks();
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(task.title);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  function handleSave() {
+    if (!editedTitle.trim()) return;
+
+    editTask(task.id, editedTitle);
+    setIsEditing(false);
+  }
+
+  return (
+    <div className={styles.task}>
+      <button className={styles.checkContainer} onClick={onCompleted}>
+        {task.isCompleted ? <BsFillCheckCircleFill /> : <div />}
+      </button>
+
+      <div className={styles.contentContainer}>
+        {isEditing ? (
+          <input
+            ref={inputRef}
+            className={styles.editInput}
+            value={editedTitle}
+            onChange={(e) => setEditedTitle(e.target.value)}
+          />
+        ) : (
+          <p className={task.isCompleted ? styles.textCompleted : ""}>
+            {task.title}
+          </p>
+        )}
+      </div>
+
+      <button
+        className={styles.actionButton}
+        onClick={() => (isEditing ? handleSave() : setIsEditing(true))}
+      >
+        {isEditing ? <TbCheck size={20} /> : <TbPencil size={20} />}
+      </button>
+
+      <button className={styles.deleteButton} onClick={onDelete}>
+        <TbTrash size={20} />
+      </button>
+    </div>
+  );
+}
