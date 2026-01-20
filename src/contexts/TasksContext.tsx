@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { arrayMove } from "@dnd-kit/sortable";
 
 interface TasksContextType {
   tasks: Task[];
@@ -13,6 +14,7 @@ interface TasksContextType {
   toggleTaskCompleted: (taskId: string) => void;
   deleteTask: (taskId: string) => void;
   editTask: (taskId: string, newTitle: string) => void;
+  moveTask: (fromIndex: number, toIndex: number) => void;
 }
 
 const TasksContext = createContext<TasksContextType | undefined>(undefined);
@@ -64,8 +66,21 @@ export function TasksProvider({ children }: { children: ReactNode }) {
     setTasks((prev) => prev.filter((task) => task.id !== taskId));
   }
 
+  function moveTask(fromIndex: number, toIndex: number) {
+    setTasks((prev) => arrayMove(prev, fromIndex, toIndex));
+  }
+
   return (
-    <TasksContext value={{ tasks, addTask, toggleTaskCompleted, deleteTask, editTask }}>
+    <TasksContext
+      value={{
+        tasks,
+        addTask,
+        toggleTaskCompleted,
+        deleteTask,
+        editTask,
+        moveTask,
+      }}
+    >
       {children}
     </TasksContext>
   );

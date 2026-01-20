@@ -1,8 +1,8 @@
-﻿import styles from "./header.module.css";
+﻿import styles from "./styles.module.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import * as React from "react";
-import { useTasks } from "@/contexts/TasksContext.tsx";
 import { useState } from "react";
+import { useTasks } from "@/contexts/TasksContext";
 
 export function Header() {
   const [title, setTitle] = useState<string>("");

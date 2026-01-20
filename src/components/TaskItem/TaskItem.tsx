@@ -1,4 +1,4 @@
-﻿import styles from "./task-item.module.css";
+﻿import styles from "./styles.module.css";
 import { TbCheck, TbPencil, TbTrash } from "react-icons/tb";
 import type { Task } from "@/types.ts";
 import { BsFillCheckCircleFill } from "react-icons/bs";
@@ -11,7 +11,11 @@ interface Props {
   onDelete: () => void;
 }
 
-export function TaskItem({ task, onCompleted, onDelete }: Props) {
+export function TaskItem({
+  task,
+  onCompleted,
+  onDelete,
+}: Props) {
   const { editTask } = useTasks();
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);

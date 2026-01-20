@@ -8,6 +8,15 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+
+    position: relative;
+    overflow: visible;
+
+    transition: border-color 0.2s;
+}
+
+.task:hover {
+    border-color: #5E60CE;
 }
 
 .task p {
