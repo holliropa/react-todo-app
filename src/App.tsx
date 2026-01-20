@@ -1,8 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Home } from "@/pages/Home";
 import { TaskDetails } from "@/pages/TaskDetails/TaskDetails.tsx";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   { path: "/", element: <Home /> },
   { path: "/task/:id", element: <TaskDetails /> },
 ]);
