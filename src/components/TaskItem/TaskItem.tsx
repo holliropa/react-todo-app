@@ -4,6 +4,7 @@ import type { Task } from "@/types";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { useRef, useState } from "react";
 import { useTasksStore } from "@/store/useTasksStore.ts";
+import { Link } from "react-router-dom";
 
 interface Props {
   task: Task;
@@ -39,9 +40,11 @@ export function TaskItem({ task, onCompleted, onDelete }: Props) {
             onChange={(e) => setEditedTitle(e.target.value)}
           />
         ) : (
-          <p className={task.isCompleted ? styles.textCompleted : ""}>
-            {task.title}
-          </p>
+          <Link to={`task/${task.id}`}>
+            <p className={task.isCompleted ? styles.textCompleted : ""}>
+              {task.title}
+            </p>
+          </Link>
         )}
       </div>
 

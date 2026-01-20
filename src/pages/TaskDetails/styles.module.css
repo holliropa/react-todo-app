@@ -1,0 +1,101 @@
+﻿.container {
+    width: 100%;
+    max-width: 736px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.backButton {
+    background: transparent;
+    border: none;
+    color: #4ea8de;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.backButton:hover {
+    background-color: #333333;
+    color: #8284FA;
+}
+
+.card {
+    background: #262626;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.card h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #F2F2F2;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+}
+
+.todo {
+    color: #4EA8DE;
+    font-weight: bold;
+    background: rgba(130, 132, 250, 0.1);
+    padding: 4px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+}
+
+.done {
+    color: #8284FA;
+    font-weight: bold;
+    background: rgba(130, 132, 250, 0.1);
+    padding: 4px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+}
+
+.deleteButton {
+    margin-top: 1rem;
+    background: transparent;
+    border: 1px solid #e25858;
+    color: #e25858;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    transition: all 0.2s;
+}
+
+.deleteButton:hover {
+    background: #e25858;
+    color: #F2F2F2;
+}
