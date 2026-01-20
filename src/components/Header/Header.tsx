@@ -2,11 +2,11 @@
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import * as React from "react";
 import { useState } from "react";
-import { useTasks } from "@/contexts/TasksContext";
+import { useTasksStore } from "@/store/useTasksStore";
 
 export function Header() {
   const [title, setTitle] = useState<string>("");
-  const { addTask } = useTasks();
+  const addTask = useTasksStore((state) => state.add);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -23,7 +23,7 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <img src='/todoLogo.svg' alt="logo" />
+      <img src="/todoLogo.svg" alt="logo" />
 
       <form className={styles.newTaskForm} onSubmit={handleSubmit}>
         <input

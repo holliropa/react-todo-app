@@ -1,5 +1,4 @@
 ﻿import styles from "./styles.module.css";
-import { useTasks } from "@/contexts/TasksContext.tsx";
 import {
   closestCenter,
   DndContext,
@@ -15,9 +14,13 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { SortableTaskItem } from "@/components/TaskItem";
+import { useTasksStore } from "@/store/useTasksStore.ts";
 
 export function Tasks() {
-  const { tasks, toggleTaskCompleted, deleteTask, moveTask } = useTasks();
+  const tasks = useTasksStore((state) => state.tasks);
+  const toggleTaskCompleted = useTasksStore((state) => state.toggleCompleted);
+  const deleteTask = useTasksStore((state) => state.delete);
+  const moveTask = useTasksStore((state) => state.move);
 
   const tasksCount = tasks.length;
   const completedTasksCount = tasks.filter((task) => task.isCompleted).length;
